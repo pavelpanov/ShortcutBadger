@@ -42,6 +42,37 @@ public abstract class ShortcutBadger {
 
     protected abstract void executeBadge(int badgeCount) throws ShortcutBadgeException;
 
+	public static boolean isBadgeSupport(Context context) {
+		//find the home launcher Package
+		Intent intent = new Intent(Intent.ACTION_MAIN);
+		intent.addCategory(Intent.CATEGORY_HOME);
+		ResolveInfo resolveInfo = context.getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY);
+		String currentHomePackage = resolveInfo.activityInfo.packageName;
+
+		//different home launcher packages use different way adding badges
+		boolean isSupport = false;
+		if (HOME_PACKAGE_SONY.equals(currentHomePackage)) {
+			isSupport = true;
+		} else if (HOME_PACKAGE_SAMSUNG.equals(currentHomePackage)) {
+			isSupport = true;
+		} else if (HOME_PACKAGE_LG.equals(currentHomePackage)) {
+			isSupport = true;
+		} else if (HOME_PACKAGE_HTC.equals(currentHomePackage)) {
+			isSupport = true;
+		} else if (HOME_PACKAGE_ANDROID.equals(currentHomePackage)) {
+			isSupport = true;
+		} else if (HOME_PACKAGE_APEX.equals(currentHomePackage)) {
+			isSupport = true;
+		} else if (HOME_PACKAGE_ADW.equals(currentHomePackage)
+				|| HOME_PACKAGE_ADW_EX.equals(currentHomePackage)) {
+			isSupport = true;
+		} else if (HOME_PACKAGE_NOVA.equals(currentHomePackage)) {
+			isSupport = true;
+		}
+
+		return isSupport;
+	}
+
     public static void setBadge(Context context, int badgeCount) throws ShortcutBadgeException {
         //badgeCount should between 0 to 99
         if (badgeCount < MIN_BADGE_COUNT || badgeCount > MAX_BADGE_COUNT) {
