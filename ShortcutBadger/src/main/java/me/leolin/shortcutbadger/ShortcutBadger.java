@@ -29,7 +29,7 @@ public abstract class ShortcutBadger {
     private static final String MESSAGE_NOT_SUPPORT_THIS_HOME = "ShortcutBadger is currently not support the home launcher package \"%s\"";
 
     private static final int MIN_BADGE_COUNT = 0;
-    private static final int MAX_BADGE_COUNT = 99;
+    private static final int MAX_BADGE_COUNT = 999;
 
     private ShortcutBadger() {
     }
@@ -75,10 +75,7 @@ public abstract class ShortcutBadger {
 
     public static void setBadge(Context context, int badgeCount) throws ShortcutBadgeException {
         //badgeCount should between 0 to 99
-        if (badgeCount < MIN_BADGE_COUNT || badgeCount > MAX_BADGE_COUNT) {
-            String exceptionMessage = String.format(MESSAGE_NOT_SUPPORT_BADGE_COUNT, badgeCount);
-            throw new ShortcutBadgeException(exceptionMessage);
-        }
+		badgeCount = Math.min(Math.max(badgeCount, MIN_BADGE_COUNT), MAX_BADGE_COUNT);
 
         //find the home launcher Package
         Intent intent = new Intent(Intent.ACTION_MAIN);
