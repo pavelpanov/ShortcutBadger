@@ -39,7 +39,6 @@ public class SamsungHomeBadger extends ShortcutBadger {
             contentValues.put("badgecount", badgeCount);
             contentResolver.insert(mUri, contentValues);
         }
-
-
+        cursor.close();
     }
 }
