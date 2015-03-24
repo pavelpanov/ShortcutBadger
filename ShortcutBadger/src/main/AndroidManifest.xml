@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-		  package="com.example.main"
-		  android:versionCode="1"
-		  android:versionName="1.0">
+		  package="me.leolin.shortcutbadger"
+		>
 
-	<application
-			android:label="@string/app_name"
-			android:icon="@drawable/ic_launcher">
-		<activity
-				android:name="ACTIVITY_ENTRY_NAME"
-				android:label="@string/app_name">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN"/>
-				<category android:name="android.intent.category.LAUNCHER"/>
-			</intent-filter>
-		</activity>
-	</application>
+	<!--for android-->
+	<uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+	<uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/>
+
+	<!--for Samsung-->
+	<uses-permission android:name="com.sec.android.provider.badge.permission.READ"/>
+	<uses-permission android:name="com.sec.android.provider.badge.permission.WRITE"/>
+
+	<!--for htc-->
+	<uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS"/>
+	<uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT"/>
+
+	<!--for sony-->
+	<uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE"/>
+
+	<!--for apex-->
+	<uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT"/>
+
 </manifest>
