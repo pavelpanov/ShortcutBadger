@@ -8,7 +8,7 @@ package me.leolin.shortcutbadger;
  * To change this template use File | Settings | File Templates.
  */
 public class ShortcutBadgeException extends Exception {
-    public ShortcutBadgeException(String message) {
-        super(message);
-    }
+	public ShortcutBadgeException(String message) {
+		super(message);
+	}
 }
